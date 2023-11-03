@@ -58,10 +58,7 @@ public class Inscripcion {
         return true;
     }
 
-   // public Materia getMateria() {
-        //return nombreMateria;//
-    //}
-
+   
     
    }
 

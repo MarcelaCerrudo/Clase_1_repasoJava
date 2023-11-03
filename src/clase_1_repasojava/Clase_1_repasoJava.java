@@ -20,8 +20,8 @@ public class Clase_1_repasoJava {
         analisisMatematicoIII.agregarCorrelativa(analisisMatematicoII);
 
         Alumno alumno1 = new Alumno("Juan Perez", 25536586);
-        //alumno1.inscripto(analisisMatematicoI);
-       // alumno1.inscripto(analisisMatematicoII);
+        alumno1.inscripto(analisisMatematicoI);
+        alumno1.inscripto(analisisMatematicoII);
         alumno1.inscripto(analisisMatematicoIII);
       
 
