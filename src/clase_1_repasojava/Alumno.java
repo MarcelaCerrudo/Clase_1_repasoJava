@@ -1,20 +1,31 @@
 package clase_1_repasojava;
 
-public class Alumno {
-    private int idAlumno;
-    private int dni;
-    private String Apellido;
-    private String Nombre;
-    private boolean activo;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Alumno() {
+public class Alumno {
+
+    private String nombreApellido;
+    private int dni;
+    private List<Inscripcion> inscripciones;
+
+    public Alumno(int dni) {
+        this.dni = dni;
+    }
+    
+
+    public Alumno(String nombreApellido, int dni) {
+        this.nombreApellido = nombreApellido;
+        this.dni = dni;
+        this.inscripciones = new ArrayList<>();
     }
 
-    public Alumno(int dni, String Apellido, String Nombre, boolean activo) {
-        this.dni = dni;
-        this.Apellido = Apellido;
-        this.Nombre = Nombre;
-        this.activo = activo;
+    public String getNombreApellido() {
+        return nombreApellido;
+    }
+
+    public void setNombreApellido(String nombreApellido) {
+        this.nombreApellido = nombreApellido;
     }
 
     public int getDni() {
@@ -25,29 +36,13 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public String getApellido() {
-        return Apellido;
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void inscripto(Materia nombreMateria) {
+        Inscripcion inscripcion = new Inscripcion( nombreMateria);
+        inscripciones.add(inscripcion);
     }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-    
 
 }
