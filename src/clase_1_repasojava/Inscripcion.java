@@ -1,67 +1,63 @@
-
 package clase_1_repasojava;
+
 
 import java.util.List;
 
-
 public class Inscripcion {
-    private Alumno dniAlumno;
-    private Materia nombreMateria;
+     private Alumno alumno;
+    private Materia materia;
 
-    public Inscripcion(Alumno dniAlumno, Materia nombreMateria) {
-        this.dniAlumno = dniAlumno;
-        this.nombreMateria = nombreMateria;
-    }
+    public boolean aprobada() {
 
-    public Inscripcion(Materia nombreMateria) {
-        this.nombreMateria = nombreMateria;
-    }
 
-    
+        List<Materia> materiasCorrelativas = this.getMateria().getCorrelativas();
 
-    
-    
 
-    public Alumno getDniAlumno() {
-        return dniAlumno;
-    }
+        List<Materia> materiasAlumno = this.getAlumno().getMateriasAprobadas();
 
-    public void setDniAlumno(Alumno dniAlumno) {
-        this.dniAlumno = dniAlumno;
-    }
+        if (materiasCorrelativas.isEmpty()) {
+            return true;
+        }
 
-    public Materia getNombreMateria() {
-        return nombreMateria;
-    }
+        boolean estaAprobada = false;
+        for (Materia materiaCorrelativa: materiasCorrelativas) {
 
-    public void setNombreMateria(Materia nombreMateria) {
-        this.nombreMateria = nombreMateria;
-    }
- 
-     
-
-  
-     public boolean aprobado() {
-        List<Materia> correlativas = nombreMateria.getCorrelativas();
-        for (Materia correlativa : correlativas) {
-            boolean aprobada = false;
-            for (Inscripcion inscripcion : dniAlumno.getInscripciones()) {
-                if (inscripcion.getNombreMateria() == correlativa) {
-                    aprobada = true;
-                    break;
+            for (Materia materiaAprobadaAlumno: materiasAlumno) {
+            
+                if (materiaCorrelativa.getNombreMateria().equalsIgnoreCase(materiaAprobadaAlumno.getNombreMateria())) {
+                    estaAprobada = true;
+                    
+                    
+                     
+                   break;
+                  
+                } else {
+                    estaAprobada = false;
                 }
             }
-            if (!aprobada) {
-                return false;
+            if (estaAprobada==false) {
+                return estaAprobada;
             }
         }
+
         return true;
     }
 
-   
-    
-   }
+    public Alumno getAlumno() {
+        return alumno;
+    }
 
-    
-    
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
 
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+
+  
+    }
+}
